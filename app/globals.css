@@ -1,26 +1,122 @@
 @import "tailwindcss";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0d1b2a;
+  --navy-dark: #080e14;
+  --gold: #c9a84c;
+  --gold-dark: #9e7c2e;
+  --slate: #1b3a5c;
+  --cream: #f5f0e8;
+  --silver: #d4d4d4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+.font-display {
+  font-family: "Playfair Display", serif;
+}
+
+.gold-divider {
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 0 auto;
+}
+
+.countdown-box {
+  background: rgba(13, 27, 42, 0.8);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-width: 72px;
+  text-align: center;
+}
+
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-hover:hover {
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+  transform: translateY(-2px);
+}
+
+.card-gold-top {
+  border-top: 4px solid var(--gold);
+}
+
+.btn-gold {
+  background-color: var(--gold);
+  color: var(--navy);
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-gold:hover {
+  background-color: var(--gold-dark);
+}
+
+.btn-outline {
+  border: 2px solid var(--gold);
+  color: var(--cream);
+  font-weight: 600;
+  padding: 10px 26px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-outline:hover {
+  background-color: var(--gold);
+  color: var(--navy);
+}
+
+details summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--silver);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::after {
+  content: "+";
+  font-size: 20px;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+details[open] summary::after {
+  content: "−";
+}
+
+details[open] .faq-answer {
+  padding: 12px 0 16px;
+  color: #555;
+  line-height: 1.7;
 }
