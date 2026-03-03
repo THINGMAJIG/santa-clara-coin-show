@@ -6,14 +6,14 @@ export const SHOW_CONFIG = {
   tagline: "Northern California's Premier Numismatic Event",
 
   // Next upcoming show
-  nextShowName: "Summer 2026 Show",
-  startDate: "2026-06-05T10:00:00", // Update this each show
-  endDate: "2026-06-06T18:00:00",   // Update this each show
+  nextShowName: "Spring 2026 Show",
+  startDate: "2026-04-24T10:00:00", // Update this each show
+  endDate: "2026-04-25T18:00:00",   // Update this each show
 
   // Show schedule (displayed on homepage and visitors page)
   schedule: [
-    { day: "Friday", date: "June 5, 2026", hours: "10:00 AM – 6:00 PM" },
-    { day: "Saturday", date: "June 6, 2026", hours: "10:00 AM – 6:00 PM" },
+    { day: "Friday", date: "April 24, 2026", hours: "10:00 AM – 6:00 PM" },
+    { day: "Saturday", date: "April 25, 2026", hours: "10:00 AM – 6:00 PM" },
   ],
 
   // Venue
@@ -36,9 +36,9 @@ export const SHOW_CONFIG = {
   parkingNote: "Free parking on site",
 
   // Show stats
-  yearEstablished: 1978,
-  dealerCount: "65+",
-  attendeesPerShow: "5,000–8,000",
+  yearEstablished: 2026,
+  dealerCount: "20+",
+  attendeesPerShow: "350+",
 
   // Contact
   contactEmail: "info@santaclaracoinshow.com", // Update with real email

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: `%s | ${SHOW_CONFIG.showName}`,
   },
   description:
-    "The Santa Clara Coin Show features 65+ dealers of coins, currency, bullion & collectibles at American Legion Post 419, 867 Laurelwood Rd, Santa Clara. $6 admission, free parking. Est. 1978.",
+    "The Santa Clara Coin Show features 20+ dealers of coins, currency, bullion & collectibles at American Legion Post 419, 867 Laurelwood Rd, Santa Clara. $6 admission, free parking.",
   keywords: [
     "Santa Clara coin show",
     "Bay Area coin show",
