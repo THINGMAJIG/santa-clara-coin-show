@@ -6,11 +6,11 @@ import { SHOW_CONFIG } from "@/data/config";
 
 export const metadata: Metadata = {
   title: {
-    default: `${SHOW_CONFIG.showName} | Santa Clara Convention Center`,
+    default: `${SHOW_CONFIG.showName} | American Legion Post 419, Santa Clara`,
     template: `%s | ${SHOW_CONFIG.showName}`,
   },
   description:
-    "The Santa Clara Coin Show features 65+ dealers of coins, currency, bullion & collectibles at the Santa Clara Convention Center. $6 admission, free parking. Est. 1978.",
+    "The Santa Clara Coin Show features 65+ dealers of coins, currency, bullion & collectibles at American Legion Post 419, 867 Laurelwood Rd, Santa Clara. $6 admission, free parking. Est. 1978.",
   keywords: [
     "Santa Clara coin show",
     "Bay Area coin show",
