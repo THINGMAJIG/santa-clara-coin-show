@@ -134,7 +134,6 @@ export default async function VisitorsPage() {
               "Gold & Silver Bullion",
               "Tokens & Medals",
               "Supplies & Accessories",
-              "Stamps",
               "Estate & General Collectibles",
             ].map((item) => (
               <div
