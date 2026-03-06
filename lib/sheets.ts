@@ -89,13 +89,15 @@ export async function getDealers(): Promise<SheetDealer[]> {
     spreadsheetId: getSpreadsheetId(),
     range: "Dealers!A2:E",
   });
-  return (res.data.values ?? []).map((row) => ({
-    name: row[0] ?? "",
-    specialties: row[1] ? row[1].split(",").map((s: string) => s.trim()).filter(Boolean) : [],
-    table: row[2] ?? "",
-    website: row[3] ?? "",
-    notes: row[4] ?? "",
-  }));
+  return (res.data.values ?? [])
+    .filter((row) => row[0]?.trim())
+    .map((row) => ({
+      name: row[0] ?? "",
+      specialties: row[1] ? row[1].split(",").map((s: string) => s.trim()).filter(Boolean) : [],
+      table: row[2] ?? "",
+      website: row[3] ?? "",
+      notes: row[4] ?? "",
+    }));
 }
 
 export async function saveDealers(dealers: SheetDealer[]): Promise<void> {
