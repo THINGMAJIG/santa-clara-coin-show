@@ -18,13 +18,13 @@ export const SHOW_CONFIG = {
 
   // Venue
   venueName: "American Legion Post 419",
-  venueAddress: "867 Laurelwood Rd",
-  venueCity: "Santa Clara, CA 95054",
-  venueFullAddress: "867 Laurelwood Rd, Santa Clara, CA 95054",
+  venueAddress: "958 Homestead Rd",
+  venueCity: "Santa Clara, CA 95050",
+  venueFullAddress: "958 Homestead Rd, Santa Clara, CA 95050",
   googleMapsEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.7!2d-121.9551!3d37.3523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb4c7c5b6c5a5%3A0x1234567890abcdef!2sAmerican+Legion+Post+419!5e0!3m2!1sen!2sus!4v1234567890",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3171.734!2d-121.9459307!3d37.3487906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcbac4135ff75%3A0x466dc4ae6f98a51f!2s958+Homestead+Rd%2C+Santa+Clara%2C+CA+95050!5e0!3m2!1sen!2sus!4v1741200000000",
   googleMapsDirectionsUrl:
-    "https://maps.google.com/?daddr=867+Laurelwood+Rd+Santa+Clara+CA+95054",
+    "https://maps.google.com/?q=958+Homestead+Rd,+Santa+Clara,+CA+95050",
 
   // Admission
   admissionEarlyBird: "",           // e.g. "$4.00" — leave empty to hide

@@ -107,7 +107,7 @@ export default async function VisitorsPage() {
               </p>
             </div>
           </div>
-          <MapEmbed height={380} />
+          <MapEmbed height={380} src={SHOW_CONFIG.googleMapsEmbedUrl} venueName={SHOW_CONFIG.venueName} />
         </div>
       </section>
 
