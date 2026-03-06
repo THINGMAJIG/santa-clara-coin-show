@@ -27,6 +27,8 @@ export async function getPublicConfig(): Promise<PublicConfig> {
       venueFullAddress:       config.venueFullAddress       || SHOW_CONFIG.venueFullAddress,
       googleMapsEmbedUrl:     config.googleMapsEmbedUrl     || SHOW_CONFIG.googleMapsEmbedUrl,
       googleMapsDirectionsUrl:config.googleMapsDirectionsUrl|| SHOW_CONFIG.googleMapsDirectionsUrl,
+      admissionEarlyBird:     config.admissionEarlyBird     ?? SHOW_CONFIG.admissionEarlyBird,
+      admissionEarlyBirdNote: config.admissionEarlyBirdNote ?? SHOW_CONFIG.admissionEarlyBirdNote,
       admissionAdult:         config.admissionAdult         || SHOW_CONFIG.admissionAdult,
       admissionAdultNote:     config.admissionAdultNote     || SHOW_CONFIG.admissionAdultNote,
       admissionYouth:         config.admissionYouth         || SHOW_CONFIG.admissionYouth,

@@ -19,6 +19,8 @@ interface ConfigState {
   venueFullAddress: string;
   googleMapsEmbedUrl: string;
   googleMapsDirectionsUrl: string;
+  admissionEarlyBird: string;
+  admissionEarlyBirdNote: string;
   admissionAdult: string;
   admissionAdultNote: string;
   admissionYouth: string;
@@ -48,6 +50,8 @@ const DEFAULT_CONFIG: ConfigState = {
   venueFullAddress: "",
   googleMapsEmbedUrl: "",
   googleMapsDirectionsUrl: "",
+  admissionEarlyBird: "",
+  admissionEarlyBirdNote: "",
   admissionAdult: "",
   admissionAdultNote: "",
   admissionYouth: "",
@@ -393,6 +397,12 @@ export default function AdminConfigPage() {
       <div style={sectionStyle}>
         <SectionHeader title="Admission" />
         <div style={gridStyle}>
+          <Field label="Early Bird Price (e.g. '$4.00') — leave blank to hide">
+            <input style={inputStyle} value={config.admissionEarlyBird} onChange={(e) => set("admissionEarlyBird", e.target.value)} placeholder="Leave blank to hide early bird row" />
+          </Field>
+          <Field label="Early Bird Note (e.g. 'First hour of show only')">
+            <input style={inputStyle} value={config.admissionEarlyBirdNote} onChange={(e) => set("admissionEarlyBirdNote", e.target.value)} />
+          </Field>
           <Field label="Adult Price (e.g. '$6.00')">
             <input style={inputStyle} value={config.admissionAdult} onChange={(e) => set("admissionAdult", e.target.value)} />
           </Field>

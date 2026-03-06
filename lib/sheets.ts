@@ -23,6 +23,8 @@ export const CONFIG_KEYS = [
   "venueFullAddress",
   "googleMapsEmbedUrl",
   "googleMapsDirectionsUrl",
+  "admissionEarlyBird",
+  "admissionEarlyBirdNote",
   "admissionAdult",
   "admissionAdultNote",
   "admissionYouth",

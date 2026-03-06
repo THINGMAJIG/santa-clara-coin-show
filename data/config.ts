@@ -27,6 +27,8 @@ export const SHOW_CONFIG = {
     "https://maps.google.com/?daddr=867+Laurelwood+Rd+Santa+Clara+CA+95054",
 
   // Admission
+  admissionEarlyBird: "",           // e.g. "$4.00" — leave empty to hide
+  admissionEarlyBirdNote: "",       // e.g. "First hour of show only"
   admissionAdult: "$6.00",
   admissionAdultNote: "Valid all days of the show",
   admissionYouth: "FREE",

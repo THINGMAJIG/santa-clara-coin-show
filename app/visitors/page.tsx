@@ -185,6 +185,7 @@ export default async function VisitorsPage() {
             </thead>
             <tbody>
               {[
+                ...(SHOW_CONFIG.admissionEarlyBird ? [{ type: "Early Bird", price: SHOW_CONFIG.admissionEarlyBird, note: SHOW_CONFIG.admissionEarlyBirdNote, highlight: true }] : []),
                 { type: "Adults", price: SHOW_CONFIG.admissionAdult, note: SHOW_CONFIG.admissionAdultNote },
                 { type: "Youth (under 16)", price: SHOW_CONFIG.admissionYouth, note: SHOW_CONFIG.admissionYouthNote, green: true },
                 { type: "Active Military", price: SHOW_CONFIG.admissionMilitary, note: SHOW_CONFIG.admissionMilitaryNote, green: true },

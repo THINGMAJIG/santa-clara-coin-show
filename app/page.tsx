@@ -81,6 +81,16 @@ export default async function Home() {
                   {SHOW_CONFIG.parkingNote}
                 </span>
               </div>
+              {SHOW_CONFIG.admissionEarlyBird && (
+                <div className="flex items-center gap-2 justify-center md:justify-start" style={{ color: "var(--cream)" }}>
+                  <span style={{ color: "var(--gold)" }}>⭐</span>
+                  <span style={{ opacity: 0.9 }}>
+                    <strong style={{ color: "var(--gold)" }}>Early Bird</strong>{" "}
+                    {SHOW_CONFIG.admissionEarlyBird}
+                    {SHOW_CONFIG.admissionEarlyBirdNote && ` · ${SHOW_CONFIG.admissionEarlyBirdNote}`}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* CTAs */}

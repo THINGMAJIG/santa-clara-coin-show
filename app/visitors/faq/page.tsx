@@ -13,7 +13,7 @@ export default async function VisitorFaqPage() {
   const faqs = [
     { q: "What are the show hours?", a: `The show is open ${SHOW_CONFIG.schedule.map((s) => `${s.day} ${s.date} from ${s.hours}`).join(", and ")}.` },
     { q: "Where is the show located?", a: `${SHOW_CONFIG.venueName}, ${SHOW_CONFIG.venueFullAddress}.` },
-    { q: "How much does admission cost?", a: `Adults: ${SHOW_CONFIG.admissionAdult} (${SHOW_CONFIG.admissionAdultNote}). Youth under 16: FREE with paying adult. Active Military: FREE with valid ID.` },
+    { q: "How much does admission cost?", a: `Adults: ${SHOW_CONFIG.admissionAdult} (${SHOW_CONFIG.admissionAdultNote}). Youth under 16: FREE with paying adult. Active Military: FREE with valid ID.${SHOW_CONFIG.admissionEarlyBird ? ` Early Bird special: ${SHOW_CONFIG.admissionEarlyBird}${SHOW_CONFIG.admissionEarlyBirdNote ? ` (${SHOW_CONFIG.admissionEarlyBirdNote})` : ""}.` : ""}` },
     { q: "Is parking free?", a: "Yes. Free parking is available on site." },
     { q: "How often does the show occur?", a: "The Santa Clara Coin Show is held multiple times per year. Sign up for our email list to be notified of upcoming dates." },
     { q: "Can children attend for free?", a: `Yes! Children under 16 are admitted free of charge when accompanied by a paying adult.` },
