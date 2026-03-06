@@ -4,8 +4,8 @@ import { DEALERS, type DealerSpecialty } from "@/data/dealers";
 import { SHOW_CONFIG } from "@/data/config";
 import { getDealers, type SheetDealer } from "@/lib/sheets";
 
-// Refresh every 5 minutes so admin changes appear without a full redeploy
-export const revalidate = 300;
+// Refresh every 30 seconds so admin changes appear quickly
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Dealer Directory",
