@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { SHOW_CONFIG } from "@/data/config";
+import type { PublicConfig } from "@/lib/getPublicConfig";
 
-export default function Footer() {
+export default function Footer({ config }: { config: PublicConfig }) {
   const year = new Date().getFullYear();
   return (
     <footer style={{ backgroundColor: "var(--navy-dark)" }}>
@@ -13,22 +13,22 @@ export default function Footer() {
               className="font-display font-bold text-xl"
               style={{ color: "var(--gold)" }}
             >
-              ⚜ {SHOW_CONFIG.showName}
+              ⚜ {config.showName}
             </span>
             <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--cream)", opacity: 0.8 }}>
               Northern California&rsquo;s premier numismatic event.
-              Running since {SHOW_CONFIG.yearEstablished}.
+              Running since {config.yearEstablished}.
             </p>
             <p className="mt-3 text-sm" style={{ color: "var(--cream)", opacity: 0.7 }}>
               <a
-                href={`mailto:${SHOW_CONFIG.contactEmail}`}
+                href={`mailto:${config.contactEmail}`}
                 style={{ color: "var(--gold)" }}
               >
-                {SHOW_CONFIG.contactEmail}
+                {config.contactEmail}
               </a>
             </p>
             <p className="mt-1 text-sm" style={{ color: "var(--cream)", opacity: 0.7 }}>
-              {SHOW_CONFIG.contactPhone}
+              {config.contactPhone}
             </p>
           </div>
 
@@ -72,22 +72,22 @@ export default function Footer() {
               Venue
             </h3>
             <p className="text-sm leading-relaxed" style={{ color: "var(--cream)", opacity: 0.85 }}>
-              {SHOW_CONFIG.venueName}
+              {config.venueName}
               <br />
-              {SHOW_CONFIG.venueAddress}
+              {config.venueAddress}
               <br />
-              {SHOW_CONFIG.venueCity}
+              {config.venueCity}
             </p>
             <p className="mt-3 text-sm" style={{ color: "var(--cream)", opacity: 0.7 }}>
               <strong style={{ color: "var(--gold)" }}>Next Show:</strong>{" "}
-              {SHOW_CONFIG.schedule[0]?.date}
+              {config.schedule[0]?.date}
             </p>
             <p className="text-sm" style={{ color: "var(--cream)", opacity: 0.7 }}>
               <strong style={{ color: "var(--gold)" }}>Admission:</strong>{" "}
-              {SHOW_CONFIG.admissionAdult} · Free Parking
+              {config.admissionAdult} · Free Parking
             </p>
             <a
-              href={SHOW_CONFIG.googleMapsDirectionsUrl}
+              href={config.googleMapsDirectionsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-3 text-sm font-medium"
@@ -108,8 +108,8 @@ export default function Footer() {
           opacity: 0.5,
         }}
       >
-        © {year} {SHOW_CONFIG.showName}. Serving the numismatic community since{" "}
-        {SHOW_CONFIG.yearEstablished}.
+        © {year} {config.showName}. Serving the numismatic community since{" "}
+        {config.yearEstablished}.
       </div>
     </footer>
   );

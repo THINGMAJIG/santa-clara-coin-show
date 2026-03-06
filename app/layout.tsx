@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import PublicWrapper from "@/components/PublicWrapper";
 import { SHOW_CONFIG } from "@/data/config";
+import { getPublicConfig } from "@/lib/getPublicConfig";
+
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: {
@@ -19,15 +22,16 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const config = await getPublicConfig();
   return (
     <html lang="en">
       <body className="antialiased">
-        <PublicWrapper>{children}</PublicWrapper>
+        <PublicWrapper config={config}>{children}</PublicWrapper>
       </body>
     </html>
   );

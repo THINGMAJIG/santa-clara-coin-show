@@ -2,11 +2,14 @@
 import { usePathname } from "next/navigation";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import type { PublicConfig } from "@/lib/getPublicConfig";
 
 export default function PublicWrapper({
   children,
+  config,
 }: {
   children: React.ReactNode;
+  config: PublicConfig;
 }) {
   const pathname = usePathname();
   if (pathname.startsWith("/admin")) {
@@ -16,7 +19,7 @@ export default function PublicWrapper({
     <>
       <NavBar />
       <main>{children}</main>
-      <Footer />
+      <Footer config={config} />
     </>
   );
 }
