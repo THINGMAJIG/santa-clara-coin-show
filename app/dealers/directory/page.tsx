@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { DEALERS, type DealerSpecialty } from "@/data/dealers";
 import { SHOW_CONFIG } from "@/data/config";
+import { getDealers, type SheetDealer } from "@/lib/sheets";
+
+// Refresh every 5 minutes so admin changes appear without a full redeploy
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Dealer Directory",
   description: `Browse the ${SHOW_CONFIG.showName} dealer directory. Find dealers by name and specialty.`,
 };
 
-const specialtyColors: Record<DealerSpecialty, string> = {
+const specialtyColors: Record<string, string> = {
   "US Coins": "#1b3a5c",
   "World Coins": "#2d5016",
   "Ancient Coins": "#5c3a1b",
@@ -21,9 +25,27 @@ const specialtyColors: Record<DealerSpecialty, string> = {
   "Estate / General": "#444",
 };
 
-export default function DealerDirectoryPage() {
+const toSheetDealer = (d: typeof DEALERS[number]): SheetDealer => ({
+  name: d.name,
+  specialties: d.specialties as string[],
+  table: d.table ?? "",
+  website: d.website ?? "",
+  notes: d.notes ?? "",
+});
+
+export default async function DealerDirectoryPage() {
+  // Fetch live from Sheets if configured; fall back to static data
+  let rawDealers: SheetDealer[];
+  try {
+    rawDealers = process.env.GOOGLE_SHEETS_ID
+      ? await getDealers()
+      : DEALERS.map(toSheetDealer);
+  } catch {
+    rawDealers = DEALERS.map(toSheetDealer);
+  }
+
   // Sort alphabetically
-  const sorted = [...DEALERS].sort((a, b) => a.name.localeCompare(b.name));
+  const sorted = [...rawDealers].sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
@@ -33,7 +55,7 @@ export default function DealerDirectoryPage() {
         </h1>
         <div className="gold-divider mb-4" />
         <p className="text-lg max-w-xl mx-auto" style={{ color: "var(--cream)", opacity: 0.85 }}>
-          {sorted.length} confirmed dealers for the upcoming show.
+          {sorted.length} confirmed dealer{sorted.length !== 1 ? "s" : ""} for the upcoming show.
         </p>
       </section>
 
@@ -65,7 +87,7 @@ export default function DealerDirectoryPage() {
                   {sorted.map((dealer, i) => (
                     <tr key={dealer.name} style={{ backgroundColor: i % 2 === 0 ? "white" : "var(--cream)" }}>
                       <td className="px-4 py-3 font-bold text-center" style={{ color: "var(--gold-dark)" }}>
-                        {dealer.table ?? "—"}
+                        {dealer.table || "—"}
                       </td>
                       <td className="px-4 py-3">
                         {dealer.website ? (

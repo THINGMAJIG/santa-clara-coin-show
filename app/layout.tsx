@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import PublicWrapper from "@/components/PublicWrapper";
 import { SHOW_CONFIG } from "@/data/config";
 
 export const metadata: Metadata = {
@@ -28,9 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <NavBar />
-        <main>{children}</main>
-        <Footer />
+        <PublicWrapper>{children}</PublicWrapper>
       </body>
     </html>
   );

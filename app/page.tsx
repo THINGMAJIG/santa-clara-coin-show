@@ -85,8 +85,8 @@ export default function Home() {
               <Link href="/visitors" className="btn-gold text-base">
                 Plan Your Visit
               </Link>
-              <Link href="/dealers" className="btn-outline text-base">
-                Dealer Information
+              <Link href="/dealers/directory" className="btn-outline text-base">
+                Dealer Directory
               </Link>
             </div>
           </div>
@@ -158,10 +158,10 @@ export default function Home() {
                 icon: "🪙",
               },
               {
-                title: "I'm a Dealer",
-                desc: "Booth rates, application process, setup times, and everything you need to exhibit at the show.",
-                cta: "Dealer Info",
-                href: "/dealers",
+                title: "Dealer Directory",
+                desc: "Browse registered dealers by specialty — coins, currency, bullion, tokens, stamps, and more.",
+                cta: "View Dealer Directory",
+                href: "/dealers/directory",
                 icon: "🏪",
               },
             ].map((card) => (
