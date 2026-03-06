@@ -95,8 +95,8 @@ export default async function DealerDirectoryPage() {
                             href={dealer.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="font-semibold"
-                            style={{ color: "var(--navy)" }}
+                            className="font-semibold underline underline-offset-2"
+                            style={{ color: "var(--gold-dark)" }}
                           >
                             {dealer.name} ↗
                           </a>
