@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MapEmbed from "@/components/MapEmbed";
-import { SHOW_CONFIG } from "@/data/config";
+import { getPublicConfig } from "@/lib/getPublicConfig";
+
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Plan Your Visit",
@@ -9,7 +11,8 @@ export const metadata: Metadata = {
     "Everything you need for a great day at the Santa Clara Coin Show. Hours, admission, directions, parking, and what to expect from 65+ dealers.",
 };
 
-export default function VisitorsPage() {
+export default async function VisitorsPage() {
+  const SHOW_CONFIG = await getPublicConfig();
   return (
     <>
       {/* Page Hero */}

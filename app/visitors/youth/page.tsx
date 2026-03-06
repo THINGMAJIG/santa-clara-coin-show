@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SHOW_CONFIG } from "@/data/config";
+import { getPublicConfig } from "@/lib/getPublicConfig";
+
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Youth & Young Numismatist Program",
@@ -8,7 +10,8 @@ export const metadata: Metadata = {
     "Free admission for youth under 16. The Santa Clara Coin Show is launching a Young Numismatist (YN) program — activities, coin giveaways, mentorship, and more.",
 };
 
-export default function YouthPage() {
+export default async function YouthPage() {
+  const SHOW_CONFIG = await getPublicConfig();
   return (
     <>
       {/* Hero */}

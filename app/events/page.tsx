@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SHOW_CONFIG } from "@/data/config";
+import { getPublicConfig } from "@/lib/getPublicConfig";
+
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Events & Schedule",
   description: "Show schedule, daily events, raffle drawings, and on-site services at the Santa Clara Coin Show.",
 };
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const SHOW_CONFIG = await getPublicConfig();
   return (
     <>
       <section className="py-16 px-4 text-center" style={{ backgroundColor: "var(--navy)" }}>

@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import CountdownTimer from "@/components/CountdownTimer";
-import { SHOW_CONFIG } from "@/data/config";
+import { getPublicConfig } from "@/lib/getPublicConfig";
+
+export const revalidate = 30;
 
 const LOGO_EXISTS = true;
 
-export default function Home() {
+export default async function Home() {
+  const SHOW_CONFIG = await getPublicConfig();
   const yearsRunning = new Date().getFullYear() - SHOW_CONFIG.yearEstablished;
 
   return (

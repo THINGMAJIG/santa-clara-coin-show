@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SHOW_CONFIG } from "@/data/config";
+import { getPublicConfig } from "@/lib/getPublicConfig";
+
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Dealer Information",
   description: "Exhibit at the Santa Clara Coin Show. Booth rates, setup info, amenities, and how to apply. Serving 5,000–8,000 collectors per show since 1978.",
 };
 
-export default function DealersPage() {
+export default async function DealersPage() {
+  const SHOW_CONFIG = await getPublicConfig();
   const yearsRunning = new Date().getFullYear() - SHOW_CONFIG.yearEstablished;
 
   return (

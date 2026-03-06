@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
-import { SHOW_CONFIG } from "@/data/config";
+import { SHOW_CONFIG as STATIC_CONFIG } from "@/data/config";
+import { getPublicConfig } from "@/lib/getPublicConfig";
+
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Raffle & Prizes",
-  description: `Win rare coins and collectibles at the ${SHOW_CONFIG.showName} raffle. Tickets available at the door.`,
+  description: `Win rare coins and collectibles at the ${STATIC_CONFIG.showName} raffle. Tickets available at the door.`,
 };
 
-export default function RafflePage() {
+export default async function RafflePage() {
+  const SHOW_CONFIG = await getPublicConfig();
   return (
     <>
       <section className="py-16 px-4 text-center" style={{ backgroundColor: "var(--navy)" }}>
