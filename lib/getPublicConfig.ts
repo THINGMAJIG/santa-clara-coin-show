@@ -3,16 +3,19 @@
 // static data/config.ts if Sheets isn't configured or fails.
 // Same shape as SHOW_CONFIG so pages need minimal changes.
 // ============================================================
-import { getConfig, getSchedule } from "./sheets";
+import { getConfig, getSchedule, getDealers } from "./sheets";
 import { SHOW_CONFIG } from "@/data/config";
+import { DEALERS } from "@/data/dealers";
 
 export type PublicConfig = typeof SHOW_CONFIG;
 
 export async function getPublicConfig(): Promise<PublicConfig> {
-  if (!process.env.GOOGLE_SHEETS_ID) return SHOW_CONFIG;
+  if (!process.env.GOOGLE_SHEETS_ID) {
+    return { ...SHOW_CONFIG, dealerCount: `${DEALERS.length}+` };
+  }
 
   try {
-    const [config, schedule] = await Promise.all([getConfig(), getSchedule()]);
+    const [config, schedule, dealers] = await Promise.all([getConfig(), getSchedule(), getDealers()]);
 
     return {
       showName:               config.showName               || SHOW_CONFIG.showName,
@@ -37,7 +40,7 @@ export async function getPublicConfig(): Promise<PublicConfig> {
       admissionMilitaryNote:  config.admissionMilitaryNote  || SHOW_CONFIG.admissionMilitaryNote,
       parkingNote:            config.parkingNote            || SHOW_CONFIG.parkingNote,
       yearEstablished:        config.yearEstablished ? parseInt(config.yearEstablished) : SHOW_CONFIG.yearEstablished,
-      dealerCount:            config.dealerCount            || SHOW_CONFIG.dealerCount,
+      dealerCount:            dealers.length > 0 ? `${dealers.length}+` : (config.dealerCount || SHOW_CONFIG.dealerCount),
       attendeesPerShow:       config.attendeesPerShow       || SHOW_CONFIG.attendeesPerShow,
       contactEmail:           config.contactEmail           || SHOW_CONFIG.contactEmail,
       contactPhone:           config.contactPhone           || SHOW_CONFIG.contactPhone,
@@ -50,6 +53,6 @@ export async function getPublicConfig(): Promise<PublicConfig> {
         : SHOW_CONFIG.raffleMustBePresent,
     };
   } catch {
-    return SHOW_CONFIG;
+    return { ...SHOW_CONFIG, dealerCount: `${DEALERS.length}+` };
   }
 }
