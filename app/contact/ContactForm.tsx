@@ -11,16 +11,27 @@ interface Props {
 
 export default function ContactForm({ contactEmail, contactPhone, venueName, venueFullAddress }: Props) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+  const [sending, setSending] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-    if (res.ok) setSubmitted(true);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) setSubmitted(true);
+      else setError(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -141,8 +152,11 @@ export default function ContactForm({ contactEmail, contactPhone, venueName, ven
                     style={{ borderColor: "var(--silver)", color: "var(--navy)" }}
                   />
                 </div>
-                <button type="submit" className="btn-gold w-full text-center">
-                  Send Message
+                {error && (
+                  <p className="text-sm text-red-600">Something went wrong — please try again or email us directly.</p>
+                )}
+                <button type="submit" disabled={sending} className="btn-gold w-full text-center" style={{ opacity: sending ? 0.6 : 1 }}>
+                  {sending ? "Sending…" : "Send Message"}
                 </button>
               </form>
             )}
