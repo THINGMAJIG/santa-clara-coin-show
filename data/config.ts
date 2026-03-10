@@ -43,7 +43,7 @@ export const SHOW_CONFIG = {
   attendeesPerShow: "350+",
 
   // Contact
-  contactEmail: "info@santaclaracoinshow.com", // Update with real email
+  contactEmail: "santaclaracoinshow@gmail.com",
   contactPhone: "415-601-8661",
 
   // Raffle

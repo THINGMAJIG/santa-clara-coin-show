@@ -130,6 +130,51 @@ export async function saveDealers(dealers: SheetDealer[]): Promise<void> {
   });
 }
 
+// ── Applications ─────────────────────────────────────────────
+
+export interface ApplicationRow {
+  timestamp: string;
+  businessName: string;
+  contactName: string;
+  email: string;
+  phone: string;
+  website: string;
+  address: string;
+  specialties: string;
+  tablePreference: string;
+  showDate: string;
+  returning: string;
+  notes: string;
+}
+
+export async function saveApplication(app: Omit<ApplicationRow, "timestamp">): Promise<void> {
+  const auth = getAuth();
+  const sheets = google.sheets({ version: "v4", auth });
+  const id = getSpreadsheetId();
+
+  const row: string[] = [
+    new Date().toISOString(),
+    app.businessName,
+    app.contactName,
+    app.email,
+    app.phone,
+    app.website,
+    app.address,
+    app.specialties,
+    app.tablePreference,
+    app.showDate,
+    app.returning,
+    app.notes,
+  ];
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: id,
+    range: "Applications!A:L",
+    valueInputOption: "RAW",
+    requestBody: { values: [row] },
+  });
+}
+
 // ── Config ───────────────────────────────────────────────────
 
 export async function getConfig(): Promise<Partial<ConfigMap>> {

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { DEALERS, type DealerSpecialty } from "@/data/dealers";
 import { SHOW_CONFIG } from "@/data/config";
 import { getDealers, type SheetDealer } from "@/lib/sheets";
+import { getPublicConfig } from "@/lib/getPublicConfig";
 
 // Refresh every 30 seconds so admin changes appear quickly
 export const revalidate = 30;
@@ -36,6 +37,9 @@ const toSheetDealer = (d: typeof DEALERS[number]): SheetDealer => ({
 export default async function DealerDirectoryPage() {
   // Fetch live from Sheets if configured; fall back to static data
   let rawDealers: SheetDealer[];
+  const [liveConfig] = await Promise.all([
+    getPublicConfig(),
+  ]);
   try {
     rawDealers = process.env.GOOGLE_SHEETS_ID
       ? await getDealers()
@@ -127,7 +131,7 @@ export default async function DealerDirectoryPage() {
             </div>
             <p className="text-xs mt-3" style={{ color: "#aaa" }}>
               Dealer list is updated as confirmations are received. Last updated for{" "}
-              {SHOW_CONFIG.nextShowName}.
+              {liveConfig.nextShowName}.
             </p>
           </div>
         </section>
