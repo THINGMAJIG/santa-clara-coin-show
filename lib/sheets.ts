@@ -139,6 +139,7 @@ export interface ApplicationRow {
   email: string;
   phone: string;
   website: string;
+  sellerPermit: string;
   address: string;
   specialties: string;
   tablePreference: string;
@@ -159,6 +160,7 @@ export async function saveApplication(app: Omit<ApplicationRow, "timestamp">): P
     app.email,
     app.phone,
     app.website,
+    app.sellerPermit,
     app.address,
     app.specialties,
     app.tablePreference,
@@ -169,7 +171,7 @@ export async function saveApplication(app: Omit<ApplicationRow, "timestamp">): P
 
   await sheets.spreadsheets.values.append({
     spreadsheetId: id,
-    range: "Applications!A:L",
+    range: "Applications!A:M",
     valueInputOption: "RAW",
     requestBody: { values: [row] },
   });

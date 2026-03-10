@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     // Save to Google Sheets
     if (process.env.GOOGLE_SHEETS_ID) {
       await saveApplication({
-        businessName, contactName, email, phone, website, address,
+        businessName, contactName, email, phone, website, sellerPermit, address,
         specialties, tablePreference, showDate, returning, notes,
       });
     }
