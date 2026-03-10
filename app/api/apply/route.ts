@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const {
       businessName = "", contactName = "", email = "", phone = "",
-      website = "", address = "", specialties = "", tablePreference = "",
+      website = "", sellerPermit = "", address = "", specialties = "", tablePreference = "",
       showDate = "", returning = "", notes = "",
     } = body;
 
@@ -30,8 +30,9 @@ Business: ${businessName}
 Contact:  ${contactName}
 Email:    ${email}
 Phone:    ${phone}
-Website:  ${website}
-Address:  ${address}
+Website:       ${website}
+Seller Permit: ${sellerPermit}
+Address:       ${address}
 
 Specialties:      ${specialties}
 Table Preference: ${tablePreference}

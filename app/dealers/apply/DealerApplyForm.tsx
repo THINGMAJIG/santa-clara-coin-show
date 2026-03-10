@@ -16,6 +16,7 @@ export default function DealerApplyForm({ showName, firstShowDate, contactEmail,
     email: "",
     phone: "",
     website: "",
+    sellerPermit: "",
     address: "",
     specialties: [] as string[],
     tablePreference: "",
@@ -87,10 +88,11 @@ export default function DealerApplyForm({ showName, firstShowDate, contactEmail,
                 ["contactName", "Contact Name *", "text", true],
                 ["email", "Email Address *", "email", true],
                 ["phone", "Phone Number *", "tel", true],
-                ["website", "Website (optional)", "url", false],
+                ["website", "Website (optional)", "text", false],
+                ["sellerPermit", "CA Seller's Permit # (optional)", "text", false],
                 ["address", "Business Address *", "text", true],
               ] as [string, string, string, boolean][]).map(([field, label, type, required]) => (
-                <div key={field} className={field === "address" ? "sm:col-span-2" : ""}>
+                <div key={field} className={field === "address" || field === "sellerPermit" ? "sm:col-span-2" : ""}>
                   <label className="block font-medium mb-1" style={{ color: "var(--navy)" }}>{label}</label>
                   <input
                     type={type}
